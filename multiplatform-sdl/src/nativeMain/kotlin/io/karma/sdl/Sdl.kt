@@ -1,4 +1,4 @@
-package io.karma.wgpu
+package io.karma.sdl
 
 /**
  * @author Alexander Hinze
