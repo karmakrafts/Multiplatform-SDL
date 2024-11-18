@@ -1,0 +1,13 @@
+package = sdl3
+headers = SDL3/SDL.h
+compilerOpts = -Ibuild/sdl/headers/include
+
+libraryPaths.linux_x64 = build/sdl/linux-x64
+libraryPaths.linux_arm64 = build/sdl/linux-arm64
+libraryPaths.mingw_x64 = build/sdl/windows-x64
+libraryPaths.macos_x64 = build/sdl/macos-x64
+libraryPaths.macos_arm64 = build/sdl/macos-arm64
+
+staticLibraries.linux = libSDL3.a
+staticLibraries.macos = libSDL3.a
+staticLibraries.mingw = SDL3-static.lib

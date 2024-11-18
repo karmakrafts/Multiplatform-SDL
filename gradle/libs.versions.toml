@@ -1,0 +1,20 @@
+[versions]
+multiplatformSdl = "1.0.0"
+kotlin = "2.0.21"
+kotlinxIo = "0.5.4"
+kotest = "5.9.1"
+
+dokka = "1.9.20" # https://github.com/Kotlin/dokka/releases"
+downloadTask = "5.6.0" # https://plugins.gradle.org/plugin/de.undercouch.download
+
+sdl = "preview-3.1.6" # https://git.karmakrafts.dev/kk/prebuilts/sdl3/-/packages/
+
+[libraries]
+kotest-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotlinx-io-bytestring = { module = "org.jetbrains.kotlinx:kotlinx-io-bytestring", version.ref = "kotlinxIo" }
+kotlinx-io-core = { module = "org.jetbrains.kotlinx:kotlinx-io-core", version.ref = "kotlinxIo" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+downloadTask = { id = "de.undercouch.download", version.ref = "downloadTask" }
