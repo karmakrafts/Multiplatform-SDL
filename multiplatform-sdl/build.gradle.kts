@@ -128,7 +128,7 @@ tasks {
             reportUndocumented = false
             jdkVersion = java.toolchain.languageVersion.get().asInt()
             noAndroidSdkLink = true
-            externalDocumentationLink("https://docs.karmakrafts.dev/multiplatform-sdl")
+            externalDocumentationLink("https://docs.karmakrafts.dev/${rootProject.name}")
         }
     }
     System.getProperty("publishDocs.root")?.let { docsDir ->
