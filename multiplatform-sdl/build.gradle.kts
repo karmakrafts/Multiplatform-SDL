@@ -39,7 +39,7 @@ java {
 
 operator fun DirectoryProperty.div(name: String): Path = get().asFile.toPath() / name
 
-fun downloadWgpuBinariesTask(platform: String, arch: String): Download =
+fun downloadSdlBinariesTask(platform: String, arch: String): Download =
     tasks.create<Download>("downloadSdlBinaries${platform.capitalized()}${arch.capitalized()}") {
         group = "sdlBinaries"
         val fileName = "build-$platform-$arch-debug.zip"
@@ -50,13 +50,13 @@ fun downloadWgpuBinariesTask(platform: String, arch: String): Download =
         onlyIf { destPath.notExists() }
     }
 
-val downloadSdlBinariesWindowsX64: Download = downloadWgpuBinariesTask("windows", "x64")
-val downloadSdlBinariesLinuxX64: Download = downloadWgpuBinariesTask("linux", "x64")
-val downloadSdlBinariesLinuxArm64: Download = downloadWgpuBinariesTask("linux", "arm64")
-val downloadSdlBinariesMacosX64: Download = downloadWgpuBinariesTask("macos", "x64")
-val downloadSdlBinariesMacosArm64: Download = downloadWgpuBinariesTask("macos", "arm64")
+val downloadSdlBinariesWindowsX64: Download = downloadSdlBinariesTask("windows", "x64")
+val downloadSdlBinariesLinuxX64: Download = downloadSdlBinariesTask("linux", "x64")
+val downloadSdlBinariesLinuxArm64: Download = downloadSdlBinariesTask("linux", "arm64")
+val downloadSdlBinariesMacosX64: Download = downloadSdlBinariesTask("macos", "x64")
+val downloadSdlBinariesMacosArm64: Download = downloadSdlBinariesTask("macos", "arm64")
 
-fun extractWgpuBinariesTask(platform: String, arch: String): Copy =
+fun extractSdlBinariesTask(platform: String, arch: String): Copy =
     tasks.create<Copy>("extractSdlBinaries${platform.capitalized()}${arch.capitalized()}") {
         group = "sdlBinaries"
         val downloadTaskName = "downloadSdlBinaries${platform.capitalized()}${arch.capitalized()}"
@@ -68,11 +68,11 @@ fun extractWgpuBinariesTask(platform: String, arch: String): Copy =
         onlyIf { destPath.notExists() }
     }
 
-val extractSdlBinariesWindowsX64: Copy = extractWgpuBinariesTask("windows", "x64")
-val extractSdlBinariesLinuxX64: Copy = extractWgpuBinariesTask("linux", "x64")
-val extractSdlBinariesLinuxArm64: Copy = extractWgpuBinariesTask("linux", "arm64")
-val extractSdlBinariesMacosX64: Copy = extractWgpuBinariesTask("macos", "x64")
-val extractSdlBinariesMacosArm64: Copy = extractWgpuBinariesTask("macos", "arm64")
+val extractSdlBinariesWindowsX64: Copy = extractSdlBinariesTask("windows", "x64")
+val extractSdlBinariesLinuxX64: Copy = extractSdlBinariesTask("linux", "x64")
+val extractSdlBinariesLinuxArm64: Copy = extractSdlBinariesTask("linux", "arm64")
+val extractSdlBinariesMacosX64: Copy = extractSdlBinariesTask("macos", "x64")
+val extractSdlBinariesMacosArm64: Copy = extractSdlBinariesTask("macos", "arm64")
 
 val extractSdlBinaries: Task = tasks.create("extractSdlBinaries") {
     group = "sdlBinaries"
