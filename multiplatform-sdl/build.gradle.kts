@@ -16,8 +16,8 @@
 
 import de.undercouch.gradle.tasks.download.Download
 import org.gradle.internal.extensions.stdlib.capitalized
-import org.jetbrains.kotlin.gradle.plugin.mpp.DefaultCInteropSettings
 import java.nio.file.Path
+import kotlin.io.path.createDirectories
 import kotlin.io.path.div
 import kotlin.io.path.exists
 import kotlin.io.path.notExists
@@ -39,9 +39,16 @@ java {
 
 operator fun DirectoryProperty.div(name: String): Path = get().asFile.toPath() / name
 
+val ensureBuildDirectory: Task = tasks.create("ensureBuildDirectory") {
+    val path = layout.buildDirectory.get().asFile.toPath()
+    doLast { path.createDirectories() }
+    onlyIf { path.notExists() }
+}
+
 fun downloadSdlBinariesTask(platform: String, arch: String): Download =
     tasks.create<Download>("downloadSdlBinaries${platform.capitalized()}${arch.capitalized()}") {
         group = "sdlBinaries"
+        dependsOn(ensureBuildDirectory)
         val fileName = "build-$platform-$arch-debug.zip"
         src("https://git.karmakrafts.dev/api/v4/projects/338/packages/generic/build/${libs.versions.sdl.get()}/$fileName")
         val destPath = layout.buildDirectory / "sdl" / fileName
@@ -85,8 +92,12 @@ val extractSdlBinaries: Task = tasks.create("extractSdlBinaries") {
 
 val downloadSdlHeaders: Exec = tasks.create<Exec>("downloadSdlHeaders") {
     group = "sdlHeaders"
+    dependsOn(ensureBuildDirectory)
     workingDir = layout.buildDirectory.get().asFile
-    commandLine("git", "clone", "--branch", libs.versions.sdl.get(), "--single-branch", "https://github.com/libsdl-org/SDL", "sdl/headers")
+    commandLine(
+        "git", "clone", "--branch", libs.versions.sdl.get(), "--single-branch", "https://github.com/libsdl-org/SDL",
+        "sdl/headers"
+    )
     onlyIf { (layout.buildDirectory / "sdl" / "headers").notExists() }
 }
 
