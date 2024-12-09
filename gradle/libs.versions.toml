@@ -1,7 +1,7 @@
 [versions]
-multiplatformSdl = "1.0.0"
-kotlin = "2.0.21"
-kotlinxIo = "0.5.4"
+multiplatformSdl = "2.0.0"
+kotlin = "2.1.0"
+kotlinxIo = "0.6.0"
 kotest = "5.9.1"
 
 dokka = "1.9.20" # https://github.com/Kotlin/dokka/releases"

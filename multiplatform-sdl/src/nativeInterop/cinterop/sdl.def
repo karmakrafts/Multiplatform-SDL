@@ -1,4 +1,4 @@
-package = sdl3
+package = io.karma.sdl
 headers = SDL3/SDL.h
 compilerOpts = -Ibuild/sdl/headers/include
 
