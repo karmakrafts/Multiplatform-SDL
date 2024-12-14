@@ -26,6 +26,7 @@ publish:linux:
       -DpublishDocs.root=/var/www/docs/multiplatform-sdl
       clean
       publish{KotlinMultiplatform,LinuxX64,LinuxArm64}PublicationToGitlabRepository
+      publishAndroidNative{X64,Arm64,Arm32}PublicationToGitlabRepository
       publishDocs
       --no-daemon
       --stacktrace
@@ -57,6 +58,7 @@ publish:macos:
     - ./gradlew
       clean
       publishMacos{X64,Arm64}PublicationToGitlabRepository
+      publishIos{X64,Arm64,SimulatorArm64}PublicationToGitlabRepository
       --no-daemon
       --stacktrace
   only:
