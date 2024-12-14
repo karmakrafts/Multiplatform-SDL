@@ -21,4 +21,4 @@ libraryPaths.ios_x64 = build/sdl3/iosX64
 staticLibraries.ios = libSDL3.a
 
 libraryPaths.mingw_x64 = build/sdl3/windowsX64
-staticLibraries.mingw = SDL3.lib
+staticLibraries.mingw = SDL3-static.lib
