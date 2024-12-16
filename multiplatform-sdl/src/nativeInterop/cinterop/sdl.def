@@ -13,7 +13,8 @@ staticLibraries.android = libSDL3.a
 
 libraryPaths.macos_x64 = build/sdl3/macosX64
 libraryPaths.macos_arm64 = build/sdl3/macosArm64
-staticLibraries.macos = libSDL3.a
+staticLibraries.osx = libSDL3.a
+linkerOpts.osx = -framework Carbon -framework AVFoundation -framework CoreAudio -framework CoreHaptics -framework CoreMedia -framework CoreVideo -framework CoreFoundation -framework AudioToolbox -framework Cocoa -framework Metal -framework ForceFeedback -framework GameController -framework IOKit -framework QuartzCore -framework OpenGL -framework UniformTypeIdentifiers -framework ApplicationServices -lm
 
 libraryPaths.ios_arm64 = build/sdl3/iosArm64
 libraryPaths.ios_simulator_arm64 = build/sdl3/iosArm64
@@ -22,4 +23,3 @@ staticLibraries.ios = libSDL3.a
 
 libraryPaths.mingw_x64 = build/sdl3/windowsX64
 staticLibraries.mingw = SDL3-static.lib
-linkerOpts.mingw = -lMSVCRTD -lOLDNAMES
