@@ -1,5 +1,5 @@
 [versions]
-multiplatformSdl = "2.0.0"
+multiplatformSdl = "2.0.1"
 kotlin = "2.1.0"
 kotlinxIo = "0.6.0"
 kotest = "5.9.1"
