@@ -2,24 +2,22 @@ package = io.karma.sdl
 headers = SDL3/SDL.h
 compilerOpts = -Ibuild/sdl-headers/include
 
+staticLibraries = libSDL3.a
+
 libraryPaths.linux_x64 = build/sdl3/linuxX64
 libraryPaths.linux_arm64 = build/sdl3/linuxArm64
-staticLibraries.linux = libSDL3.a
 
 libraryPaths.android_arm64 = build/sdl3/androidArm64
 libraryPaths.android_arm32 = build/sdl3/androidArm32
 libraryPaths.android_x64 = build/sdl3/androidX64
-staticLibraries.android = libSDL3.a
 
 libraryPaths.macos_x64 = build/sdl3/macosX64
 libraryPaths.macos_arm64 = build/sdl3/macosArm64
-staticLibraries.osx = libSDL3.a
 linkerOpts.osx = -framework Carbon -framework AVFoundation -framework CoreAudio -framework CoreHaptics -framework CoreMedia -framework CoreVideo -framework CoreFoundation -framework AudioToolbox -framework Cocoa -framework Metal -framework ForceFeedback -framework GameController -framework IOKit -framework QuartzCore -framework OpenGL -framework UniformTypeIdentifiers -framework ApplicationServices -lm
 
 libraryPaths.ios_arm64 = build/sdl3/iosArm64
 libraryPaths.ios_simulator_arm64 = build/sdl3/iosArm64
 libraryPaths.ios_x64 = build/sdl3/iosX64
-staticLibraries.ios = libSDL3.a
 
 libraryPaths.mingw_x64 = build/sdl3/windowsX64
-staticLibraries.mingw = SDL3-static.lib
+linkerOpts.mingw = -lkernel32 -luser32 -lole32 -loleaut32 -lwinmm -lsetupapi -lversion
